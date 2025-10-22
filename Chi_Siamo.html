@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chi siamo — FollowerBooster</title>
+  <meta name="description" content="Siamo un team che aiuta creator e piccole imprese a crescere su Instagram con pacchetti trasparenti e assistenza rapida." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="./FollowerBoosterLogo.png" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-wrap"><img src="./FollowerBoosterLogo.png" alt="Logo FollowerBooster" class="logo"></div>
+        <div>
+          <h1>FollowerBooster</h1>
+          <p class="lead">Follower reali — consegna rapida e sicura</p>
+        </div>
+      </div>
+            <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="Chi_Siamo.html" aria-current="page">Chi siamo</a>
+        <a href="contattaci.html">Contatti</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel">Menu ▾</button>
+            <div class="menu-panel" id="menuPanel" role="menu" aria-hidden="true">
+        <a role="menuitem" href="index.html">Home</a>
+        <a role="menuitem" href="Chi_Siamo.html" aria-current="page">Chi siamo</a>
+        <a role="menuitem" href="contattaci.html">Contatti</a>
+        <a role="menuitem" href="faq.html">FAQ</a>
+        <a role="menuitem" href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <header class="section">
+      <h2>Chi siamo</h2>
+      <p class="lead">Siamo un gruppo specializzato nella crescita dei profili social. Priorità: soluzioni rapide e trasparenti con account reali.</p>
+    </header>
+
+    <section class="grid">
+      <div class="page-card">
+        <h3>Missione</h3>
+        <p class="small">Aiutiamo creator, piccole imprese e professionisti a crescere su Instagram in modo semplice e controllato. Pacchetti pensati per boost iniziali, con attenzione alla qualità.</p>
+      </div>
+      <div class="page-card">
+        <h3>Cosa offriamo</h3>
+        <ul class="small">
+          <li>Follower reali e profilati</li>
+          <li>Like ai post selezionati (quando previsto)</li>
+          <li>Supporto via e‑mail per richieste personalizzate</li>
+          <li>Consegna stimata: 24–48 ore</li>
+        </ul>
+      </div>
+      <div class="page-card">
+        <h3>Valori</h3>
+        <ul class="small">
+          <li>Trasparenza: tempi e costi chiari</li>
+          <li>Qualità: focus su account reali e attività credibile</li>
+          <li>Privacy: dati trattati con riservatezza</li>
+        </ul>
+      </div>
+      <aside class="page-card">
+        <h3>FAQ</h3>
+        <p class="small"><strong>Come avviene la consegna?</strong><br>In modo progressivo, di norma entro 24–48 ore dall’ordine.</p>
+        <p class="small"><strong>Posso scegliere i profili?</strong><br>Lavoriamo per massimizzare la coerenza con il tuo pubblico, ma non garantiamo la selezione individuale.</p>
+      </aside>
+    </section>
+
+    <section class="section page-card">
+      <h3>Contatti</h3>
+      <p class="small">Per info o assistenza scrivici a <a href="mailto:followerbooster1@gmail.com">followerbooster1@gmail.com</a>. Rispondiamo entro 24 ore lavorative.</p>
+      <a class="btn" href="contattaci.html">Vai ai contatti</a>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+  <div>© <span id="year"></span> FollowerBooster • <a href="index.html">Home</a> • <a href="Chi_Siamo.html" aria-current="page">Chi siamo</a> • <a href="contattaci.html">Contatti</a> • <a href="faq.html">FAQ</a> • <a href="privacy.html">Privacy</a></div>
+</footer>
+  </main>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menuPanel = document.getElementById('menuPanel');
+    if(menuBtn){
+      menuBtn.addEventListener('click', (e)=>{
+        const opened = menuPanel.style.display === 'block';
+        menuPanel.style.display = opened ? 'none' : 'block';
+        menuBtn.setAttribute('aria-expanded', String(!opened));
+        menuPanel.setAttribute('aria-hidden', String(opened));
+        e.stopPropagation();
+      });
+      document.addEventListener('click', (e)=>{
+        if(!menuPanel.contains(e.target) && !menuBtn.contains(e.target)){
+          menuPanel.style.display = 'none';
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuPanel.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+<script>
+  // Robust mobile menu reset & close-on-navigation
+  (function(){
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('menuPanel');
+    function closeMenu(){
+      if(!panel) return;
+      panel.style.display='none';
+      panel.setAttribute('aria-hidden','true');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    }
+    // Ensure closed on load, resize, and before unload
+    document.addEventListener('DOMContentLoaded', closeMenu);
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('pageshow', closeMenu); // for bfcache
+    if(btn && panel){
+      btn.addEventListener('click', (e)=>{
+        const opened = panel.style.display === 'block';
+        panel.style.display = opened ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!opened));
+        panel.setAttribute('aria-hidden', String(opened));
+        e.stopPropagation();
+      });
+      document.addEventListener('click', (e)=>{
+        if(!panel.contains(e.target) && !btn.contains(e.target)) closeMenu();
+      });
+      // close when clicking a menu link
+      panel.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+    }
+    // Footer year
+    const y = document.getElementById('year');
+    if(y) y.textContent = new Date().getFullYear();
+  })();
+</script>
+
+
+<script>
+  // Robust mobile menu reset & close-on-navigation
+  (function(){
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('menuPanel');
+    function closeMenu(){
+      if(!panel) return;
+      panel.style.display='none';
+      panel.setAttribute('aria-hidden','true');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    }
+    document.addEventListener('DOMContentLoaded', closeMenu);
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('pageshow', closeMenu);
+    if(btn && panel){
+      btn.addEventListener('click', (e)=>{
+        const opened = panel.style.display === 'block';
+        panel.style.display = opened ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!opened));
+        panel.setAttribute('aria-hidden', String(opened));
+        e.stopPropagation();
+      });
+      document.addEventListener('click', (e)=>{
+        if(!panel.contains(e.target) && !btn.contains(e.target)) closeMenu();
+      });
+      panel.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+    }
+    const y = document.getElementById('year');
+    if(y) y.textContent = new Date().getFullYear();
+  })();
+</script>
+\n</body>
+</html>
